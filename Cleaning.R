@@ -15,17 +15,23 @@ colnames(data)
 
 # Clean the "Logged GDP per capita" and "Ladder score" columns
 cleaned_data <- data %>%
-  mutate(
+
+mutate(
     Logged GDP per capita = as.numeric(Logged GDP per capita),  # Convert to numeric
+
     Ladder score = as.numeric(Ladder score)                    # Convert to numeric
   ) %>%
+
   filter(!is.na(Logged GDP per capita), !is.na(Ladder score))   # Remove rows with NA values
 
 # View the cleaned data
 head(cleaned_data)
 
 # Save the cleaned data to a new file
+
+
 output_path <- "E:/OneDrive/Documents/cleaned_data.csv"
+
 write.csv(cleaned_data, output_path, row.names = FALSE)
 
 cat("Cleaned data saved to:", output_path, "\n")
